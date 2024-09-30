@@ -1,14 +1,13 @@
 import {
-  GraphQLObjectType,
   GraphQLID,
-  GraphQLString,
   GraphQLList,
   GraphQLSchema,
-  GraphQLNonNull,
-  GraphQLEnumType
-} from 'graphql';
-import Client from '../models/Client.js';
+  GraphQLString,
+  GraphQLNonNull, 
+  GraphQLEnumType,
+  GraphQLObjectType, } from 'graphql';
 import Project from '../models/Project.js';
+import Client from '../models/Client.js';
 
 // Project Type Schema
 const ProjectType = new GraphQLObjectType({
