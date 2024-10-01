@@ -6,3 +6,13 @@
     background-color: #212121;
     font-family: 'Poppins', sans-serif;
 }
+
+@keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  

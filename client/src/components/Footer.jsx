@@ -83,7 +83,7 @@ export const SocialLink = ({ href, icon, label, text }) => {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center text-purple-500 hover:text-yellow-400 transition-colors duration-500 text-lg hover:duration-500"
+      className="flex items-center text-purple-400 hover:text-yellow-400 transition-colors duration-500 text-lg hover:duration-500"
       aria-label={label}
     >
       {icon}
