@@ -6,6 +6,7 @@ import Intro from './components/Intro';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Project from './pages/Project';
+import Client from './components/Client';
 import {Footer} from './components/Footer';
 import { ApolloProvider,ApolloClient,InMemoryCache } from '@apollo/client';
 
@@ -43,14 +44,15 @@ function App() {
   return (
     <>
       <ApolloProvider client={client}>
-        <Header />
+        {/* <Header /> */}
         <Routes>
           <Route path="/" element={<Intro />} />
+          <Route path="/Client" element={<Client />} />
           <Route path='/projects/:id' element={<Project />} />
-          <Route path="/Home" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </ApolloProvider>
     </>
   );
