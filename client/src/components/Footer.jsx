@@ -15,8 +15,8 @@ export const Footer = () => {
         'I am a Developer', 
         'I am a CP Enthusiast'
       ],
-      typeSpeed: 50,
-      backSpeed: 25,
+      typeSpeed: 40,
+      backSpeed: 20,
       loop: true,
     };
 
@@ -38,7 +38,7 @@ export const Footer = () => {
             ></h2>
             <div className="flex items-center space-x-2">
               <MapPin className="text-purple-500" size={24} />
-              <p className="align-middle mt-2.5 text-xl">Location: IIIT Dharwad</p>
+              <p className="align-middle text-indigo-500 mt-2.5 text-xl">Location: Indian Institute of Information Technology Dharwad</p>
             </div>
             <div className="space-y-3">
               <h3 className="text-lg font-semibold text-purple-300">Connect with me</h3>
@@ -81,7 +81,8 @@ export const Footer = () => {
   );
 };
 
-export const SocialLink = ({ href, icon, label }) => {
+
+export const SocialLink = React.memo(({ href, icon, label }) => {
   return (
     <a
       href={href}
@@ -93,7 +94,8 @@ export const SocialLink = ({ href, icon, label }) => {
       {icon}
     </a>
   );
-};
+});
+
 
 SocialLink.propTypes = {
   href: PropTypes.string.isRequired,
