@@ -5,35 +5,36 @@ import DeleteProjectButton from '../components/DeleteProjectButton';
 import EditProjectForm from '../components/EditProjectForm';
 import { useQuery } from '@apollo/client';
 import { GET_PROJECT } from '../queries/projectQueries';
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function Project() {
   const { id } = useParams();
   const { loading, error, data } = useQuery(GET_PROJECT, { variables: { id } });
 
   if (loading) return <Spinner />;
-  if (error) return <p>Something Went Wrong</p>;
+  if (error) {
+    toast.error('Something went wrong!');
+    return <p className="text-red-500">Something Went Wrong</p>;
+  }
 
   return (
     <>
-      {!loading && !error && (
-        <div className='mx-auto w-75 card p-5'>
-          <Link to='/home' className='btn btn-light btn-sm w-25 d-inline ms-auto'>
-            Back
-          </Link>
+      <ToastContainer />
+      <div className='container mx-auto mt-4 p-6 bg-gray-800 rounded-lg shadow-md'>
+        <Link to='/home' className='bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded transition duration-300 mb-4 inline-block'>
+          Back
+        </Link>
 
-          <h1>{data.project.name}</h1>
-          <p>{data.project.description}</p>
+        <h1 className='text-3xl font-bold text-purple-300'>{data.project.name}</h1>
+        <p className='text-gray-300'>{data.project.description}</p>
 
-          <h5 className='mt-3'>Project Status</h5>
-          <p className='lead'>{data.project.status}</p>
+        <h5 className='mt-3 text-xl font-semibold text-purple-400'>Project Status</h5>
+        <p className='lead text-gray-400'>{data.project.status}</p>
 
-          <ClientInfo client={data.project.client} />
-
-          <EditProjectForm project={data.project} />
-
-          <DeleteProjectButton projectId={data.project.id} />
-        </div>
-      )}
+        <ClientInfo client={data.project.client} />
+        <EditProjectForm project={data.project} />
+        <DeleteProjectButton projectId={data.project.id} />
+      </div>
     </>
   );
 }
