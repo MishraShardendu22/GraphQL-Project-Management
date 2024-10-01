@@ -72,7 +72,7 @@ function App() {
           {/* <Route path='/addClient' element={<AddClientModel />} /> */}
 
           {/* For Testing */}
-          <Route path='/addProject' element={<AddProjectModel />} />
+          {/* <Route path='/addProject' element={<AddProjectModel />} /> */}
 
           <Route path='/projects/:id' element={<Project />} />
           <Route path="/home" element={<Home />} />
