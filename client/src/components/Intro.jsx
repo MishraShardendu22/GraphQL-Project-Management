@@ -2,8 +2,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Layers, GitBranch, Zap } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
-const Home = () => {
+const Intro = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col justify-between">
       <header className="container mx-auto px-4 py-8 text-center">
@@ -28,6 +31,14 @@ const Home = () => {
             title="Real-time Updates"
             description="Stay in sync with your team using GraphQL subscriptions for instant notifications."
           />
+        </div>
+        <div className="mt-8 text-center">
+          <button
+            onClick={() => navigate('/Home')}
+            className="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded transition duration-300"
+          >
+            Go to Home
+          </button>
         </div>
       </main>
 
@@ -54,4 +65,4 @@ FeatureCard.propTypes = {
   description: PropTypes.string.isRequired,
 };
 
-export default Home;
+export default Intro;

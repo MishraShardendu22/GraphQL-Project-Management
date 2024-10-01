@@ -2,7 +2,10 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import Home from './components/Home';
+import Intro from './components/Intro';
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
+import Project from './pages/Project';
 import {Footer} from './components/Footer';
 import { ApolloProvider,ApolloClient,InMemoryCache } from '@apollo/client';
 
@@ -10,11 +13,30 @@ import { ApolloProvider,ApolloClient,InMemoryCache } from '@apollo/client';
 // It normalizes data, preventing duplication and enabling efficient updates when mutations occur. By automatically managing the cache, it enhances performance, keeps the UI consistent with the server's state, and provides developers with flexibility to read and write data directly.
 // Overall, it plays a crucial role in optimizing data management in React applications using GraphQL.
 
+// removed cache error from the code
+const cache = new InMemoryCache({
+  typePolicies: {
+    Query: {
+      fields: {
+        clients: {
+          merge(existing, incoming) {
+            return incoming;
+          },
+        },
+        projects: {
+          merge(existing, incoming) {
+            return incoming;
+          },
+        },
+      },
+    },
+  },
+});
 
 // Client sets up the Apollo Client to connect to the GraphQL server.
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql',
-  cache : new InMemoryCache()
+  cache,
 });
 
 function App() {
@@ -23,7 +45,10 @@ function App() {
       <ApolloProvider client={client}>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Intro />} />
+          <Route path='/projects/:id' element={<Project />} />
+          <Route path="/Home" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </ApolloProvider>
