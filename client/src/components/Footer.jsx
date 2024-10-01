@@ -82,7 +82,7 @@ export const Footer = () => {
 };
 
 
-export const SocialLink = React.memo(({ href, icon, label }) => {
+export const SocialLink = ({ href, icon, label }) => {
   return (
     <a
       href={href}
@@ -94,7 +94,7 @@ export const SocialLink = React.memo(({ href, icon, label }) => {
       {icon}
     </a>
   );
-});
+};
 
 
 SocialLink.propTypes = {
