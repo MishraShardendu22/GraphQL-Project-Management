@@ -1,13 +1,18 @@
-/* eslint-disable no-unused-vars */
-import React from 'react';
+import Client from '../components/Client';
+import Projects from '../components/Projects';
+import AddClientModel from '../components/AddClientModel';
+import AddProjectModel from '../components/AddProjectModel';
 
-
-function Home() {
+export default function Home() {
   return (
-    <div>
-        <h1>Project</h1>
-    </div>
-  )
+    <>
+      <div className='d-flex gap-3 mb-4'>
+        <AddClientModel />
+        <AddProjectModel />
+      </div>
+      <Projects />
+      <hr />
+      <Client />
+    </>
+  );
 }
-
-export default Home
