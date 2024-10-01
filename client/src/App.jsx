@@ -8,6 +8,8 @@ import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Project from './pages/Project';
 import {Footer} from './components/Footer';
+import AddClientModel from './components/AddClientModel';
+import AddProjectModel from './components/AddProjectModel';
 
 // import Client from './components/Client';
 // import ClientInfo from './components/ClientInfo';
@@ -57,7 +59,8 @@ function App() {
       <ApolloProvider client={client}>
         {/* <Header /> */}
         <Routes>
-          <Route path="/" element={<Intro />} />
+        
+          {/* <Route path="/" element={<Intro />} /> */}
           
           {/* For Testing */}
           {/* <Route path="/cli" element={<ClientInfo client={clientData} />} /> */}
@@ -65,12 +68,18 @@ function App() {
           {/* For Testing */}
           {/* <Route path='/client' element={<Client />} /> */}
 
+          {/* For Testing */}
+          {/* <Route path='/addClient' element={<AddClientModel />} /> */}
+
+          {/* For Testing */}
+          <Route path='/addProject' element={<AddProjectModel />} />
 
           <Route path='/projects/:id' element={<Project />} />
           <Route path="/home" element={<Home />} />
 
           {/* 404 Error Page */}
           <Route path="*" element={<NotFound />} />
+        
         </Routes>
         {/* <Footer /> */}
       </ApolloProvider>
