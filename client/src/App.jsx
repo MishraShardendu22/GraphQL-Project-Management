@@ -46,8 +46,7 @@ function App() {
       <ApolloProvider client={client}>
         {/* <Header /> */}
         <Routes>
-          <Route path="/" element={<Intro />} />
-          <Route path="/Client" element={<Client />} />
+          <Route path="/  " element={<Intro />} />
           <Route path='/projects/:id' element={<Project />} />
           <Route path="/home" element={<Home />} />
           <Route path="*" element={<NotFound />} />
