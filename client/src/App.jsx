@@ -1,13 +1,21 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Home from './components/Home';
+import {Footer} from './components/Footer';
 
 function App() {
   return (
-    <div className="container">
-      <h1 className="text-primary">Hello, Bootstrap!</h1>
-      <button className="btn btn-success">Click Me</button>
-    </div>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+      <Footer />
+    </>
   );
 }
 
 export default App;
+
