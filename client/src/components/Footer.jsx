@@ -37,26 +37,22 @@ export const Footer = () => {
               className="mt-2 text-2xl font-bold text-purple-400 w-full min-w-[300px] h-[40px] overflow-hidden"
             ></h2>
             <div className="flex items-center space-x-2">
-              <MapPin className="text-purple-500" size={24} />
-              <p className="align-middle text-indigo-500 mt-2.5 text-xl">Location: Indian Institute of Information Technology Dharwad</p>
+              <MapPin className="hover:text-yellow-400 transition-colors duration-500 text-lg hover:duration-500 text-indigo-600 ease-in-out" size={24} />
+              <p className="align-middle text-indigo-600 mt-2.5 text-xl">Location: Indian Institute of Information Technology Dharwad</p>
             </div>
             <div className="space-y-3">
               <h3 className="text-lg font-semibold text-purple-300">Connect with me</h3>
               <div className="flex space-x-3">
-                <SocialLink href="https://leetcode.com/u/ShardenduMishra22/" icon={<Code size={24} />} label="LeetCode" />
-                <span className="hover:text-yellow-400 transition-colors duration-500 text-lg hover:duration-500 ease-in-out">Explore my LeetCode profile</span>
+                <SocialLink href="https://leetcode.com/u/ShardenduMishra22/" icon={<Code className="hover:text-yellow-400 transition-colors duration-500 text-lg hover:duration-500 text-indigo-600 ease-in-out" size={24} />} label="LeetCode" text="Explore my LeetCode profile" />
               </div>
               <div className="flex space-x-3">
-                <SocialLink href="https://github.com/ShardenduMishra22" icon={<Github size={24} />} label="GitHub" />
-                <span className="hover:text-yellow-400 transition-colors duration-500 text-lg hover:duration-500 ease-in-out">Check out my GitHub</span>
+                <SocialLink href="https://github.com/ShardenduMishra22" icon={<Github className="hover:text-yellow-400 transition-colors duration-500 text-lg hover:duration-500 text-indigo-600 ease-in-out" size={24} />} label="GitHub" text="Check out my GitHub" />
               </div>
               <div className="flex space-x-3">
-                <SocialLink href="https://www.instagram.com/shardendumishra22?igsh=NHAyZWlvODF1cWs0" icon={<Instagram size={24} />} label="Instagram" />
-                <span className="hover:text-yellow-400 transition-colors duration-500 text-lg hover:duration-500 ease-in-out">Follow me on Instagram</span>
+                <SocialLink href="https://www.instagram.com/shardendumishra22?igsh=NHAyZWlvODF1cWs0" icon={<Instagram className="hover:text-yellow-400 transition-colors duration-500 text-lg hover:duration-500 text-indigo-600 ease-in-out" size={24} />} label="Instagram" text="Follow me on Instagram" />
               </div>
               <div className="flex space-x-3">
-                <SocialLink href="https://x.com/Shardendu_M" icon={<Twitter size={24} />} label="Twitter" />
-                <span className="hover:text-yellow-400 transition-colors duration-500 text-lg hover:duration-500 ease-in-out">Connect with me on Twitter</span>
+                <SocialLink href="https://x.com/Shardendu_M" icon={<Twitter className="hover:text-yellow-400 transition-colors duration-500 text-lg hover:duration-500 text-indigo-600 ease-in-out" size={24} />} label="Twitter" text="Connect with me on Twitter" />
               </div>
             </div>
           </div>
@@ -81,24 +77,24 @@ export const Footer = () => {
   );
 };
 
-
-export const SocialLink = ({ href, icon, label }) => {
+export const SocialLink = ({ href, icon, label, text }) => {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="text-gray-400 hover:text-purple-400 transition-colors duration-500 text-lg hover:duration-500"
+      className="flex items-center text-purple-500 hover:text-yellow-400 transition-colors duration-500 text-lg hover:duration-500"
       aria-label={label}
     >
       {icon}
+      <span className="ml-2">{text}</span> {/* Add spacing between icon and text */}
     </a>
   );
 };
 
-
 SocialLink.propTypes = {
   href: PropTypes.string.isRequired,
-  icon: PropTypes.node.isRequired,
+  icon: PropTypes.node.isRequired,  // The icon component
   label: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,  // Text to display
 };
