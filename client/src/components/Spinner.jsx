@@ -38,13 +38,8 @@ const CenteredSpinner = ({ message = "Please wait", description = "We're process
         <LargePurpleSpinner />
         <h2 className="mt-6 text-2xl font-semibold text-gray-800">{message}</h2>
         <p className="mt-2 text-gray-600">{description}</p>
-        <div className="mt-6 flex items-center space-x-2 text-sm text-purple-600">
-          <Loader2 className="w-4 h-4 animate-spin" />
-          <span>Loading...</span>
-        </div>
       </div>
       <div className="mt-8 text-center text-gray-500 text-sm">
-        <p>Thank you for your patience.</p>
         <p>This may take a few moments.</p>
       </div>
     </div>

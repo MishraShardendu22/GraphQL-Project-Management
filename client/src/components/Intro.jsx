@@ -34,7 +34,7 @@ const Intro = () => {
         </div>
         <div className="mt-8 text-center">
           <button
-            onClick={() => navigate('/Home')}
+            onClick={() => navigate('/home')}
             className="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded transition duration-300"
           >
             Go to Home

@@ -60,7 +60,7 @@ function App() {
         <Header />
         <Routes>
         
-          {/* <Route path="/" element={<Intro />} /> */}
+          <Route path="/" element={<Intro />} />
           
           {/* For Testing */}
           {/* <Route path="/cli" element={<ClientInfo client={clientData} />} /> */}
