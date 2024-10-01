@@ -35,6 +35,16 @@ const DELETE_PROJECT = gql`
   }
 `;
 
+
+const DELETE_PROJECTS_BY_CLIENT = gql`
+  mutation DeleteProjectsByClient($clientId: ID!) {
+    deleteProjectsByClient(clientId: $clientId) {
+      success
+      message
+    }
+  }
+`;
+
 const UPDATE_PROJECT = gql`
   mutation UpdateProject(
     $id: ID!
@@ -62,4 +72,4 @@ const UPDATE_PROJECT = gql`
   }
 `;
 
-export { ADD_PROJECT, DELETE_PROJECT, UPDATE_PROJECT };
+export { ADD_PROJECT, DELETE_PROJECT, UPDATE_PROJECT, DELETE_PROJECTS_BY_CLIENT };

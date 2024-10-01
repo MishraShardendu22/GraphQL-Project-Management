@@ -170,20 +170,32 @@ const mutation = new GraphQLObjectType({
         if (args.description) updateData.description = args.description;
         if (args.status) updateData.status = args.status;
 
-        console.log(`Updating project with ID: ${args.id} and data: ${JSON.stringify(updateData)}`);
-      
-        return Project.findByIdAndUpdate(args.id, { $set: updateData }, { new: true })
-          .then(updatedProject => {
-            if (!updatedProject) {
-              throw new Error(`No project found with ID: ${args.id}`);
+        return Project.findByIdAndUpdate(args.id, { $set: updateData }, { new: true });
+      },
+    },
+    // Delete all projects by a client
+    deleteProjectsByClient: {
+      type: new GraphQLObjectType({
+        name: 'DeleteProjectsResponse',
+        fields: {
+          success: { type: GraphQLNonNull(GraphQLString) },
+          message: { type: GraphQLString },
+        },
+      }),
+      args: {
+        clientId: { type: GraphQLNonNull(GraphQLID) },
+      },
+      resolve(parent, { clientId }) {
+        return Project.deleteMany({ clientId })
+          .then((result) => {
+            if (result.deletedCount === 0) {
+              return { success: false, message: 'No projects found for this client' };
             }
-            console.log('Updated Project:', updatedProject);
-            return updatedProject;
+            return { success: true, message: 'All projects deleted successfully' };
           })
-          .catch(error => {
-            console.error('Error updating project:', error);
-            throw new Error('Error updating project: ' + error.message);
-          });     
+          .catch((error) => {
+            return { success: false, message: error.message };
+          });
       },
     },
   },

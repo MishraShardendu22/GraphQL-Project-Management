@@ -1,15 +1,19 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { Users, AlertTriangle } from 'lucide-react';
 import { GET_CLIENTS } from "../queries/clientQueries";
+import { DELETE_PROJECTS_BY_CLIENT } from "../mutations/projectMutations"; // Import your mutation
 import ClientRow from './ClientRow';
 import CenteredSpinner from "../components/Spinner";
+import { toast } from "react-toastify";
 
 export default function Client() {
   const { loading, error, data } = useQuery(GET_CLIENTS);
   const [clients, setClients] = useState([]);
   const [deletingIds, setDeletingIds] = useState(new Set());
+  
+  const [deleteProjectsByClient] = useMutation(DELETE_PROJECTS_BY_CLIENT);
 
   useEffect(() => {
     if (data) {
@@ -17,16 +21,40 @@ export default function Client() {
     }
   }, [data]);
 
-  const handleDeleteClient = (id) => {
-    setDeletingIds(prev => new Set(prev).add(id));
-    setTimeout(() => {
+  const handleDeleteClient = async (id) => {
+    try {
+      setDeletingIds(prev => new Set(prev).add(id));
+
+      // Delete all projects associated with the client first
+      await deleteProjectsByClient({ variables: { clientId: id } });
+
+      // Update local state after deleting projects and client
       setClients(prev => prev.filter(client => client.id !== id));
       setDeletingIds(prev => {
         const newSet = new Set(prev);
         newSet.delete(id);
         return newSet;
       });
-    }, 500); // Match this with the CSS transition duration
+
+      toast.success('Client and their projects deleted successfully!', {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    } catch (error) {
+      console.error("Error deleting client and their projects:", error);
+      toast.error('Error deleting client and their projects.', {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    }
   };
 
   if (loading) return <CenteredSpinner />;
