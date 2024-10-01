@@ -1,14 +1,17 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import { ApolloProvider,ApolloClient,InMemoryCache } from '@apollo/client';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Intro from './components/Intro';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Project from './pages/Project';
-import Client from './components/Client';
 import {Footer} from './components/Footer';
-import { ApolloProvider,ApolloClient,InMemoryCache } from '@apollo/client';
+
+// import Client from './components/Client';
+// import ClientInfo from './components/ClientInfo';
+
 
 // InMemoryCache in Apollo Client stores GraphQL data in memory, allowing quick access to previously fetched results without additional network requests. 
 // It normalizes data, preventing duplication and enabling efficient updates when mutations occur. By automatically managing the cache, it enhances performance, keeps the UI consistent with the server's state, and provides developers with flexibility to read and write data directly.
@@ -34,6 +37,14 @@ const cache = new InMemoryCache({
   },
 });
 
+// For Testing
+// const clientData = {
+//   name: "John Doe",
+//   email: "john@example.com",
+//   phone: "123-456-7890"
+// };
+
+
 // Client sets up the Apollo Client to connect to the GraphQL server.
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql',
@@ -46,9 +57,19 @@ function App() {
       <ApolloProvider client={client}>
         {/* <Header /> */}
         <Routes>
-          <Route path="/  " element={<Intro />} />
+          <Route path="/" element={<Intro />} />
+          
+          {/* For Testing */}
+          {/* <Route path="/cli" element={<ClientInfo client={clientData} />} /> */}
+          
+          {/* For Testing */}
+          {/* <Route path='/client' element={<Client />} /> */}
+
+
           <Route path='/projects/:id' element={<Project />} />
           <Route path="/home" element={<Home />} />
+
+          {/* 404 Error Page */}
           <Route path="*" element={<NotFound />} />
         </Routes>
         {/* <Footer /> */}
