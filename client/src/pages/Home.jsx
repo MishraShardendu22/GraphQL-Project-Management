@@ -13,14 +13,14 @@ export default function Home() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container bg-indigo-900 min-w-full mx-auto px-4 py-8">
       <ToastContainer />
-      <div className='flex flex-wrap gap-4 mb-8'>
+      <div className='flex ml-40 flex-wrap gap-4 mb-8'>
         <AddClientModel notifySuccess={notifySuccess}>
           {({ openModal }) => (
             <button
               onClick={openModal}
-              className="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded transition duration-300 flex items-center"
+              className=" bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded transition duration-300 flex items-center"
             >
               <UserPlus className="mr-2" size={16} />
               Add Client

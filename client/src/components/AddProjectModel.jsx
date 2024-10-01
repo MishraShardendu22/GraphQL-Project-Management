@@ -8,12 +8,14 @@ import { GET_CLIENTS } from '../queries/clientQueries';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CenteredSpinner from './Spinner';
+import { useNavigate } from 'react-router-dom';
 
 export default function AddProjectModel() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [clientId, setClientId] = useState('');
   const [status, setStatus] = useState('new');
+  const navigate = useNavigate();
 
   const [addProject] = useMutation(ADD_PROJECT, {
     update(cache, { data: { addProject } }) {
@@ -25,29 +27,44 @@ export default function AddProjectModel() {
     },
   });
 
-  const { loading, error, data } = useQuery(GET_CLIENTS);
+  const { loading: clientsLoading, error: clientsError, data } = useQuery(GET_CLIENTS);
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    if (name === '' || description === '' || status === '') {
+    if (name === '' || description === '' || clientId === '' || status === '') {
       return toast.error('Please fill in all fields', {
         position: 'top-right',
         autoClose: 3000,
       });
     }
+
     try {
-      addProject({ variables: { name, description, clientId, status } });
+      const { data } = await addProject({
+        variables: { name, description, clientId, status },
+      });
+      
       toast.success('Project added successfully!', {
         position: 'top-right',
         autoClose: 3000,
         icon: '🚀',
       });
+
+      // Reset form fields
       setName('');
       setDescription('');
-      setStatus('new');
       setClientId('');
+      setStatus('new');
+
+      // Close modal
       document.getElementById('addProjectModel').classList.add('hidden');
+
+      // Redirect to /home after 5 seconds
+      setTimeout(() => {
+        navigate('/home');
+      }, 5000);
+      
     } catch (error) {
+      console.error(error);
       toast.error('Error adding project. Please try again.', {
         position: 'top-right',
         autoClose: 3000,
@@ -55,8 +72,8 @@ export default function AddProjectModel() {
     }
   };
 
-  if (loading) return <CenteredSpinner />;
-  if (error) return 'Something Went Wrong';
+  if (clientsLoading) return <CenteredSpinner />;
+  if (clientsError) return 'Something Went Wrong';
 
   return (
     <>
