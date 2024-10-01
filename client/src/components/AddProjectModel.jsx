@@ -7,6 +7,7 @@ import { GET_PROJECTS } from '../queries/projectQueries';
 import { GET_CLIENTS } from '../queries/clientQueries';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CenteredSpinner from './Spinner';
 
 export default function AddProjectModel() {
   const [name, setName] = useState('');
@@ -54,7 +55,7 @@ export default function AddProjectModel() {
     }
   };
 
-  if (loading) return null;
+  if (loading) return <CenteredSpinner />;
   if (error) return 'Something Went Wrong';
 
   return (
