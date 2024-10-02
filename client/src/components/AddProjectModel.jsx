@@ -5,8 +5,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import { ADD_PROJECT } from '../mutations/projectMutations';
 import { GET_PROJECTS } from '../queries/projectQueries';
 import { GET_CLIENTS } from '../queries/clientQueries';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-hot-toast';
 import CenteredSpinner from './Spinner';
 import { useNavigate } from 'react-router-dom';
 
@@ -29,23 +28,23 @@ export default function AddProjectModel() {
 
   const { loading: clientsLoading, error: clientsError, data } = useQuery(GET_CLIENTS);
 
-  const onSubmit = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
     if (name === '' || description === '' || clientId === '' || status === '') {
       return toast.error('Please fill in all fields', {
         position: 'top-right',
-        autoClose: 3000,
+        duration: 3000,
       });
     }
 
     try {
-      const { data } = await addProject({
+      addProject({
         variables: { name, description, clientId, status },
       });
       
       toast.success('Project added successfully!', {
         position: 'top-right',
-        autoClose: 3000,
+        duration: 3000,
         icon: '🚀',
       });
 
@@ -67,7 +66,7 @@ export default function AddProjectModel() {
       console.error(error);
       toast.error('Error adding project. Please try again.', {
         position: 'top-right',
-        autoClose: 3000,
+        duration: 3000,
       });
     }
   };
@@ -77,7 +76,6 @@ export default function AddProjectModel() {
 
   return (
     <>
-      <ToastContainer />
       <button
         type="button"
         className="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded transition duration-300 flex items-center"
@@ -87,7 +85,7 @@ export default function AddProjectModel() {
         New Project
       </button>
 
-      <div id="addProjectModel" className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+      <div id="addProjectModel" className="fixed inset-0 z-50 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
         <div className="relative top-20 mx-auto p-5 border w-[800px] shadow-lg rounded-md bg-gray-800">
           <div className="mt-3 text-center">
             <h3 className="text-2xl font-semibold text-purple-300 mb-4">New Project</h3>
