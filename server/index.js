@@ -2,6 +2,7 @@ import { graphqlHTTP } from 'express-graphql';
 import express from 'express';
 import dotenv from 'dotenv';
 import colors from 'colors';
+import { graphqlHTTP } from 'express-graphql';
 
 import cors from 'cors'; // Import CORS
 // address cors issue of front and back end
