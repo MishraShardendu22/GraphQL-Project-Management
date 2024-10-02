@@ -25,7 +25,7 @@
 - **Tailwind CSS** - <img src="https://imgs.search.brave.com/hGnGOpzRCMB3ypxZIG0ba0Uw6tHkJNfPy9oeCf51r1g/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMtMDAuaWNvbmR1/Y2suY29tL2Fzc2V0/cy4wMC90YWlsd2lu/ZC1jc3MtaWNvbi0y/MDQ4eDEyMjktdThk/enQ0dWgucG5n" width="60" height="40" style="background-color: white; vertical-align: middle;" />  
   Tailwind CSS is a utility-first CSS framework for styling. It is used to design responsive and visually appealing layouts for the project.
 
-- **Bootstrap** - <img src="https://imgs.search.brave.com/J9gXM1RMImTq6YEEuA23b-eY4TQ2OeOshdMzEDh8nRk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cubG9naW5zLmNvbS9zdGF0aWMvYWdlcy9zZW5kZXIvcGxhdGZvcm0vYm9vdHN0cmFwLWFjY2Vzc29yaWVzL1JhbmdnZS1Mb2dvXzQ0MC5wbmc" width="60" height="40" style="background-color: white; vertical-align: middle;" />  
+- **Bootstrap** - <img src="https://icons.getbootstrap.com/assets/img/icons-hero.png" width="60" height="40" style="background-color: white; vertical-align: middle;" />  
   Bootstrap is a popular front-end framework for developing responsive and mobile-first websites. It provides ready-to-use components and utilities for faster web development.
 
 ### Backend
