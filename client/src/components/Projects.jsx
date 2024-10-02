@@ -1,7 +1,6 @@
-// import React from 'react';
 import { useQuery } from '@apollo/client';
 import { ToastContainer, toast } from 'react-toastify';
-import { Loader, AlertCircle } from 'lucide-react';
+import { Loader, AlertCircle, FolderOpen } from 'lucide-react';
 import { GET_PROJECTS } from '../queries/projectQueries';
 import ProjectCard from './ProjectCard';
 
@@ -22,12 +21,23 @@ export default function Projects() {
   );
 
   if (data.projects.length === 0) {
-    toast.warn('No projects found!');
+    toast.warn('No projects found!', {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
   }
 
   return (
     <div className="container mx-auto px-4">
       <ToastContainer />
+      <h1 className="text-2xl font-bold text-purple-100 mb-6 flex items-center">
+        <FolderOpen className="mr-2" size={24} />
+        Projects
+      </h1>
       {data.projects.length > 0 ? (
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-8'>
           {data.projects.map((project) => (
@@ -35,8 +45,11 @@ export default function Projects() {
           ))}
         </div>
       ) : (
-        <p className='text-gray-300 text-center text-xl mt-8'>No Projects Available</p>
+        <div className="bg-purple-800 rounded-lg shadow-md p-6 text-center">
+          <p className='text-purple-200 text-lg'>No Projects Available</p>
+          <p className='text-purple-300 mt-2 text-sm'>Start by creating a new project!</p>
+        </div>
       )}
     </div>
   );
-}
+} 
