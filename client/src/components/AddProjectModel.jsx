@@ -28,7 +28,7 @@ export default function AddProjectModel() {
 
   const { loading: clientsLoading, error: clientsError, data } = useQuery(GET_CLIENTS);
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     if (name === '' || description === '' || clientId === '' || status === '') {
       return toast.error('Please fill in all fields', {
@@ -36,28 +36,25 @@ export default function AddProjectModel() {
         duration: 3000,
       });
     }
-
+  
     try {
-      addProject({
+      await addProject({
         variables: { name, description, clientId, status },
       });
-      
+  
       toast.success('Project added successfully!', {
         position: 'top-right',
         duration: 3000,
         icon: '🚀',
       });
-
-      // Reset form fields
+  
       setName('');
       setDescription('');
       setClientId('');
       setStatus('new');
-
-      // Close modal
+  
       document.getElementById('addProjectModel').classList.add('hidden');
-
-      // Redirect to /home after 5 seconds
+  
       setTimeout(() => {
         navigate('/home');
       }, 5000);
@@ -70,6 +67,7 @@ export default function AddProjectModel() {
       });
     }
   };
+  
 
   if (clientsLoading) return <CenteredSpinner />;
   if (clientsError) return 'Something Went Wrong';
