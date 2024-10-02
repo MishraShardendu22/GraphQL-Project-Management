@@ -27,7 +27,7 @@
 
 ### Backend
 
-- **Apollo Client** - <img src="https://www.svgrepo.com/show/305728/apollographql.svg" width="60" height="40" style="background-color: white; vertical-align: middle;" />  
+- **Apollo Client** - <img src="https://tse2.mm.bing.net/th?id=OIP.85rEhJXFCzB9rrQHYgGGIAHaD-&pid=Api&P=0&h=180" width="60" height="40" style="background-color: white; vertical-align: middle;" />  
   Apollo Client is a state management library used with GraphQL. It is used to manage the GraphQL API queries and mutations in the backend.
 
 - **GraphQL** - <img src="https://cdn.thenewstack.io/media/2022/09/c2305485-graphql.png" width="60" height="40" style="background-color: white; vertical-align: middle;" />  
