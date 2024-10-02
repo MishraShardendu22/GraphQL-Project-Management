@@ -22,7 +22,7 @@
 - **React** - <img src="https://media.licdn.com/dms/image/v2/C4E12AQFdVr18zUa17Q/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1624637761724?e=2147483647&v=beta&t=uOrqjZV7ZeSvE6euFcZVEuj-2yuec1FppjnE6IUYdzY" width="60" height="40" style="background-color: white; vertical-align: middle;" />  
   React is a JavaScript library for building user interfaces. It is used to create dynamic components and manage the frontend of the project.
 
-- **Tailwind CSS** - <img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/tailwindcss_logo_icon_170649.png" width="60" height="40" style="background-color: white; vertical-align: middle;" />  
+- **Tailwind CSS** - <img src="https://imgs.search.brave.com/hGnGOpzRCMB3ypxZIG0ba0Uw6tHkJNfPy9oeCf51r1g/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMtMDAuaWNvbmR1/Y2suY29tL2Fzc2V0/cy4wMC90YWlsd2lu/ZC1jc3MtaWNvbi0y/MDQ4eDEyMjktdThk/enQ0dWgucG5n" width="60" height="40" style="background-color: white; vertical-align: middle;" />  
   Tailwind CSS is a utility-first CSS framework for styling. It is used to design responsive and visually appealing layouts for the project.
 
 ### Backend
